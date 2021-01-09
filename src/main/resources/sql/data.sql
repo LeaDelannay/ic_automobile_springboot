@@ -13,7 +13,7 @@ CREATE TABLE Contrat(
         nom        Varchar (50) NOT NULL ,
         marge      Float NOT NULL
 	,CONSTRAINT Contrat_PK PRIMARY KEY (id_contrat)
-)ENGINE=InnoDB;
+);
 
 INSERT INTO `contrat` (`id_contrat`, `nom`, `marge`) VALUES
 (NULL, 'cc5', '5'),
@@ -36,7 +36,7 @@ CREATE TABLE Client(
 	,CONSTRAINT Client_PK PRIMARY KEY (id_client)
 
 	,CONSTRAINT Client_Contrat_FK FOREIGN KEY (id_contrat) REFERENCES Contrat(id_contrat)
-)ENGINE=InnoDB;
+);
 
 INSERT INTO `client` (`id_client`, `nom`, `adresse`, `email`, `token`, `id_contrat`) VALUES
 (NULL, 'client1', '2 rue de machin 33700 Mérignac', 'client1@ici.fr', 'token1', '1'),
@@ -54,18 +54,18 @@ CREATE TABLE Article(
         nom        Varchar (50) NOT NULL ,
         montant    Float NOT NULL
 	,CONSTRAINT Article_PK PRIMARY KEY (id_article)
-)ENGINE=InnoDB;
+);
 
 INSERT INTO `article` (`id_article`, `nom`, `montant`) VALUES
 (NULL, 'Injecteur', '200'),
 (NULL, 'Filtre à huile', '3'),
 (NULL, 'Disque de frein', '25'),
 (NULL, 'Radar de recul', '60'),
-(NULL, "Balai d\'essuie-glace avant", '15'),
-(NULL, "Moteur d\'essuie-glace avant", '85'),
+(NULL, 'Balai d essuie-glace avant', '15'),
+(NULL, 'Moteur d essuie-glace avant', '85'),
 (NULL, 'Poulie roue libre', '25'),
 (NULL, 'Kit de réparation différentiel', '120'),
-(NULL, "Suspension, corps de l\'essieu", '18'),
+(NULL, 'Suspension, corps de l essieu', '18'),
 (NULL, 'Rotule de suspension ', '30');
 
 
@@ -78,7 +78,7 @@ CREATE TABLE tva(
         id_tva  Int  Auto_increment  NOT NULL ,
         montant Float NOT NULL
 	,CONSTRAINT tva_PK PRIMARY KEY (id_tva)
-)ENGINE=InnoDB;
+);
 
 INSERT INTO `tva` (`id_tva`, `montant`) VALUES
 (NULL, '20'),
@@ -97,7 +97,7 @@ CREATE TABLE client_article(
 
 	,CONSTRAINT client_article_Article_FK FOREIGN KEY (id_article) REFERENCES Article(id_article)
 	,CONSTRAINT client_article_Client0_FK FOREIGN KEY (id_client) REFERENCES Client(id_client)
-)ENGINE=InnoDB;
+);
 
 INSERT INTO `client_article` (`id_article`, `id_client`) VALUES
 ('1', '1'),
