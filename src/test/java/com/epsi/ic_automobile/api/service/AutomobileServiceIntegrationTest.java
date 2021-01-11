@@ -1,4 +1,4 @@
-package com.epsi.ic_automobile.service;
+package com.epsi.ic_automobile.api.service;
 
 import com.epsi.ic_automobile.model.Contrat;
 import org.junit.jupiter.api.Test;

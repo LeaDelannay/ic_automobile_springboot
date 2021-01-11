@@ -8,7 +8,7 @@
     <title>Accueil</title>
   </head>
   <body>
-  <h1>ACCUEIL</h1>
+    <h1>ACCUEIL</h1>
     <br>
     <ul>
       <c:forEach var="contrat" items="${listeContrats}">
