@@ -4,6 +4,7 @@ import com.epsi.ic_automobile.model.Article;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -20,6 +21,9 @@ public class HttpArticleService {
     HttpClient httpClient;
     ObjectMapper articleMapper;
 
+    @Value("${server.port}")
+    String port;
+
     public HttpArticleService(ObjectMapper articleMapper) {
         this.httpClient = HttpClient.newHttpClient();
         this.articleMapper=articleMapper;
@@ -27,7 +31,7 @@ public class HttpArticleService {
 
     public List<Article> getAllArticles() {
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8081/api/article/all"))
+                .uri(URI.create("http://localhost:"+port+"/api/article/all"))
                 .GET()
                 .build();
 
