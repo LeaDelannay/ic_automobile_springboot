@@ -19,7 +19,6 @@ public class ConnexionRestController {
         this.automobileService = automobileService;
     }
 
-
     @PostMapping(path="/")
     public Integer seConnecter(@RequestBody ConnexionDto connexionDto) {
         log.debug("connexion from internal api : email="+connexionDto.getEmail()+" token="+connexionDto.getToken());

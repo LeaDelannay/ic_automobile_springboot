@@ -1,6 +1,7 @@
 package com.epsi.ic_automobile.api.controller;
 
 import com.epsi.ic_automobile.api.repository.ArticleRepository;
+import com.epsi.ic_automobile.api.service.AutomobileService;
 import com.epsi.ic_automobile.model.Article;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,18 +14,16 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/api/article")
-public class ArticlesController {
+public class ArticlesRestController {
 
-    ArticleRepository articleRepository;
+    AutomobileService automobileService;
 
-    public ArticlesController(ArticleRepository articleRepository) {
-        this.articleRepository = articleRepository;
+    public ArticlesRestController(AutomobileService automobileService) {
+        this.automobileService = automobileService;
     }
 
     @GetMapping("/all")
     public List<Article> getAllArticles(){
-        List<Article> articles = new ArrayList<>();
-        articleRepository.findAll().forEach(articles::add);
-        return articles;
+        return automobileService.getAllArticles();
     }
 }
