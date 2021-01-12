@@ -4,6 +4,7 @@ import com.epsi.ic_automobile.model.Contrat;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -19,6 +20,9 @@ public class HttpContratService {
     HttpClient httpClient;
     ObjectMapper mapper;
 
+    @Value("${server.port}")
+    String port;
+
     public HttpContratService(ObjectMapper mapper) {
         this.mapper=mapper;
         this.httpClient = HttpClient.newHttpClient();
@@ -26,7 +30,7 @@ public class HttpContratService {
 
     public Contrat getContratClient(int idClient) {
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8081/api/contrat/client?id="+idClient))
+                .uri(URI.create("http://localhost:"+port+"/api/contrat/client?id="+idClient))
                 .GET()
                 .build();
 

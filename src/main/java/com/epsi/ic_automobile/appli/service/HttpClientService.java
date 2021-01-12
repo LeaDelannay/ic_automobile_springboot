@@ -1,5 +1,6 @@
 package com.epsi.ic_automobile.appli.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -12,6 +13,8 @@ import java.net.http.HttpResponse;
 public class HttpClientService {
 
     HttpClient httpClient;
+    @Value("${server.port}")
+    String port;
 
     public HttpClientService() {
         this.httpClient = HttpClient.newHttpClient();
@@ -21,7 +24,7 @@ public class HttpClientService {
     public Integer postAuthentificationInfo(String email, String token){
             String authent = "{\"email\":\""+email+"\", \"token\":\""+token+"\"}";
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://localhost:8081/api/connexion/"))
+                    .uri(URI.create("http://localhost:"+port+"/api/connexion/"))
                     .setHeader("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(authent))
                     .build();
