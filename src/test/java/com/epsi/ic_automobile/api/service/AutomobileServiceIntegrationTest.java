@@ -28,7 +28,6 @@ class AutomobileServiceIntegrationTest {
         List<Contrat> listeContrats = automobileService.getListeContrats();
         assertThat(listeContrats.size()).isEqualTo(5);
         assertThat(listeContrats.size()).isNotEqualTo(6);
-
     }
 
 }

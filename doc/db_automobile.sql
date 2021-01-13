@@ -5,9 +5,11 @@
 CREATE DATABASE IF NOT EXISTS db_automobile;
 
 use db_automobile;
-drop table if exists Contrat;
-drop table if exists Client;
+drop table if exists Tva;
+drop table if exists client_article;
 drop table if exists Article;
+drop table if exists Client;
+drop table if exists Contrat;
 
 
 #------------------------------------------------------------

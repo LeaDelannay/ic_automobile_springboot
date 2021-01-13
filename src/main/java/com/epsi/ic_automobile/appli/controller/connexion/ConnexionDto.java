@@ -1,12 +1,15 @@
 package com.epsi.ic_automobile.appli.controller.connexion;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ConnexionDto {
 
     @NotNull(message = "Vous devez renseigner l'email.")
