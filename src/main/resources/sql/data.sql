@@ -1,14 +1,15 @@
 
+drop table if exists Tva;
+drop table if exists client_article;
+drop table if exists Article;
 drop table if exists Client;
 drop table if exists Contrat;
-drop table if exists Article;
-
 
 #------------------------------------------------------------
 # Table: Contrat
 #------------------------------------------------------------
 
-CREATE TABLE Contrat(
+CREATE TABLE IF NOT EXISTS Contrat(
         id_contrat Int   NOT NULL ,
         nom        Varchar (50) NOT NULL ,
         marge      Float NOT NULL
@@ -49,7 +50,7 @@ INSERT INTO `client` (`id_client`, `nom`, `adresse`, `email`, `token`, `id_contr
 # Table: Article
 #------------------------------------------------------------
 
-CREATE TABLE Article(
+CREATE TABLE IF NOT EXISTS Article(
         id_article Int  Auto_increment  NOT NULL ,
         nom        Varchar (50) NOT NULL ,
         montant    Float NOT NULL
@@ -74,7 +75,7 @@ INSERT INTO `article` (`id_article`, `nom`, `montant`) VALUES
 # Table: tva
 #------------------------------------------------------------
 
-CREATE TABLE tva(
+CREATE TABLE IF NOT EXISTS tva(
         id_tva  Int  Auto_increment  NOT NULL ,
         montant Float NOT NULL
 	,CONSTRAINT tva_PK PRIMARY KEY (id_tva)
@@ -90,7 +91,7 @@ INSERT INTO `tva` (`id_tva`, `montant`) VALUES
 # Table: client_article
 #------------------------------------------------------------
 
-CREATE TABLE client_article(
+CREATE TABLE IF NOT EXISTS client_article(
         id_article Int NOT NULL ,
         id_client  Int NOT NULL
 	,CONSTRAINT client_article_PK PRIMARY KEY (id_article,id_client)

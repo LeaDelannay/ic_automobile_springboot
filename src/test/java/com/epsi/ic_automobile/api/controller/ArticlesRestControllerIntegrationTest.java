@@ -42,7 +42,7 @@ class ArticlesRestControllerIntegrationTest {
                 Article[].class);
 
         assertThat(response.getBody()).isNotEmpty();
-        assertThat(response.getStatusCode()).isEqualTo(200);
+        assertThat(response.getStatusCode().is2xxSuccessful()).isTrue();
         assertThat(response.getBody().length==10);
         assertThat(response.getBody()[0].getNom()).isEqualTo("Injecteur");
     }
