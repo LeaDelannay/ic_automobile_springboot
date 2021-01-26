@@ -5,22 +5,22 @@
 CREATE DATABASE IF NOT EXISTS db_automobile;
 
 use db_automobile;
-drop table if exists Tva;
+drop table if exists tva;
 drop table if exists client_article;
-drop table if exists Article;
-drop table if exists Client;
-drop table if exists Contrat;
+drop table if exists article;
+drop table if exists client;
+drop table if exists contrat;
 
 
 #------------------------------------------------------------
-# Table: Contrat
+# Table: contrat
 #------------------------------------------------------------
 
-CREATE TABLE Contrat(
+CREATE TABLE contrat(
         id_contrat Int  Auto_increment  NOT NULL ,
         nom        Varchar (50) NOT NULL ,
         marge      Float NOT NULL
-	,CONSTRAINT Contrat_PK PRIMARY KEY (id_contrat)
+	,CONSTRAINT contrat_PK PRIMARY KEY (id_contrat)
 )ENGINE=InnoDB;
 
 INSERT INTO `contrat` (`id_contrat`, `nom`, `marge`) VALUES 
@@ -31,19 +31,19 @@ INSERT INTO `contrat` (`id_contrat`, `nom`, `marge`) VALUES
 (NULL, 'cc25', '25');
 
 #------------------------------------------------------------
-# Table: Client
+# Table: client
 #------------------------------------------------------------
 
-CREATE TABLE Client(
+CREATE TABLE client(
         id_client  Int  Auto_increment  NOT NULL ,
         nom        Varchar (50) NOT NULL ,
         adresse    Varchar (255) NOT NULL ,
         email      Varchar (50) NOT NULL ,
         token      Varchar (255) NOT NULL ,
         id_contrat Int NOT NULL
-	,CONSTRAINT Client_PK PRIMARY KEY (id_client)
+	,CONSTRAINT client_PK PRIMARY KEY (id_client)
 
-	,CONSTRAINT Client_Contrat_FK FOREIGN KEY (id_contrat) REFERENCES Contrat(id_contrat)
+	,CONSTRAINT client_contrat_FK FOREIGN KEY (id_contrat) REFERENCES contrat(id_contrat)
 )ENGINE=InnoDB;
 
 INSERT INTO `client` (`id_client`, `nom`, `adresse`, `email`, `token`, `id_contrat`) VALUES 
@@ -54,14 +54,14 @@ INSERT INTO `client` (`id_client`, `nom`, `adresse`, `email`, `token`, `id_contr
 (NULL, 'client5', 'adresse', 'client5@ici.fr', 'token5', '5');
 
 #------------------------------------------------------------
-# Table: Article
+# Table: article
 #------------------------------------------------------------
 
-CREATE TABLE Article(
+CREATE TABLE article(
         id_article Int  Auto_increment  NOT NULL ,
         nom        Varchar (50) NOT NULL ,
         montant    Float NOT NULL
-	,CONSTRAINT Article_PK PRIMARY KEY (id_article)
+	,CONSTRAINT article_PK PRIMARY KEY (id_article)
 )ENGINE=InnoDB;
 
 INSERT INTO `article` (`id_article`, `nom`, `montant`) VALUES 
@@ -103,8 +103,8 @@ CREATE TABLE client_article(
         id_client  Int NOT NULL
 	,CONSTRAINT client_article_PK PRIMARY KEY (id_article,id_client)
 
-	,CONSTRAINT client_article_Article_FK FOREIGN KEY (id_article) REFERENCES Article(id_article)
-	,CONSTRAINT client_article_Client0_FK FOREIGN KEY (id_client) REFERENCES Client(id_client)
+	,CONSTRAINT client_article_article_FK FOREIGN KEY (id_article) REFERENCES article(id_article)
+	,CONSTRAINT client_article_client0_FK FOREIGN KEY (id_client) REFERENCES client(id_client)
 )ENGINE=InnoDB;
 
 INSERT INTO `client_article` (`id_article`, `id_client`) VALUES 
